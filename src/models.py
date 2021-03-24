@@ -26,24 +26,13 @@ class User(Base):
     name = Column(String(250), nullable=False)
     email = Column(String(250), nullable=False)
 
-class UserFollower(Base):
-    __tablename__ = 'userfollower'
-    id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, ForeignKey('user.id'))
-    follower_id = Column(Integer, ForeignKey('user.id'))
-
 class Post(Base):
     __tablename__ = 'post'
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('user.id'))
+    type= Column(String)
     comment = Column(String(250))
-
-class UserFeed(Base):
-    __tablename__ = 'userfeed'
-    id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, ForeignKey('user.id'))
-    post_id = Column(Integer, ForeignKey('post.id'))
-
+    
 class PostComment(Base):
     __tablename__ = 'postcomment'
     id = Column(Integer, primary_key=True)
